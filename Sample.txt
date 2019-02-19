@@ -17,7 +17,7 @@ namespace temp
 
 
             SmtpClient smtpClient = new SmtpClient();
-            NetworkCredential basicCredential = new NetworkCredential("deep@procableconnect.com", "Cable@1234");
+            NetworkCredential basicCredential = new NetworkCredential("deep@procableconnect.com", "xxxxxx");
             
             MailMessage message = new MailMessage();
             MailAddress fromAddress = new MailAddress(from);
