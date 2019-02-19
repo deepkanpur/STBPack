@@ -1,0 +1,46 @@
+using System;
+using System.Net;
+using System.Net.Mail;
+
+namespace temp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+            string server = "mail.procableconnect.com";
+            string to = "deep_jiwaji@rediffmail.com";
+            string from = "deep@procableconnect.com";
+            string subject = "email using code procable";
+            string body = "email body using code procable";
+
+
+            SmtpClient smtpClient = new SmtpClient();
+            NetworkCredential basicCredential = new NetworkCredential("deep@procableconnect.com", "Cable@1234");
+            
+            MailMessage message = new MailMessage();
+            MailAddress fromAddress = new MailAddress(from);
+            smtpClient.Host = "procableconnect.com";
+            smtpClient.Port = 587;// 25;
+            smtpClient.EnableSsl = false;
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.Credentials = basicCredential;
+
+            message.From = fromAddress;
+            message.Subject = subject;            
+            message.IsBodyHtml = true;
+            message.Body = body;
+            message.To.Add(to);
+
+            try
+            {
+                smtpClient.Send(message);
+            }
+            catch (Exception ex)
+            {
+                var s = ex.Message;
+            }
+        }
+    }
+}
